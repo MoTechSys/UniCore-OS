@@ -46,6 +46,19 @@
 
 ## 2. الهيكلية وقاعدة البيانات (Architecture & Database)
 
+### 2.0. حزمة التكنولوجيا (Tech Stack)
+
+- **الإطار (Framework):** Next.js 16 (App Router)
+- **لغة البرمجة:** TypeScript 5.9
+- **قاعدة البيانات:**
+  - **التطوير (Development):** SQLite (للسرعة وسهولة الإعداد بدون Docker)
+  - **الإنتاج (Production):** PostgreSQL (للقوة والموثوقية)
+- **ORM:** Prisma 5
+- **المصادقة (Authentication):** NextAuth v5
+- **الواجهات (UI):** TailwindCSS 4 + shadcn/ui
+- **التحقق (Validation):** Zod
+- **إدارة الحالة (State Management):** Zustand
+
 ### 2.1. الهيكل الهرمي للكيانات الأكاديمية
 
 العلاقة بين الكيانات الأكاديمية تتبع تسلسلاً هرمياً ومنطقياً لضمان تنظيم البيانات وسهولة الاستعلام.
