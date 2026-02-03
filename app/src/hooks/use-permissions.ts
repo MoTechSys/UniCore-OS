@@ -52,12 +52,15 @@ export function usePermissions(): UsePermissionsReturn {
   const { data: session, status } = useSession()
   
   const permissions = session?.user?.permissions ?? []
+  const isSystemRole = session?.user?.isSystemRole ?? false
   const isLoading = status === 'loading'
   
   /**
    * Check if user has a specific permission
+   * System admin bypasses all permission checks
    */
   const hasPermission = (permission: Permission): boolean => {
+    if (isSystemRole) return true
     return permissions.includes(permission)
   }
   
@@ -65,6 +68,7 @@ export function usePermissions(): UsePermissionsReturn {
    * Check if user has ALL of the specified permissions
    */
   const hasAllPermissions = (requiredPermissions: Permission[]): boolean => {
+    if (isSystemRole) return true
     return requiredPermissions.every(p => permissions.includes(p))
   }
   
@@ -72,6 +76,7 @@ export function usePermissions(): UsePermissionsReturn {
    * Check if user has ANY of the specified permissions
    */
   const hasAnyPermission = (requiredPermissions: Permission[]): boolean => {
+    if (isSystemRole) return true
     return requiredPermissions.some(p => permissions.includes(p))
   }
   

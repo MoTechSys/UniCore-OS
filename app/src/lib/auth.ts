@@ -202,6 +202,23 @@ export function hasAnyPermission(
 /**
  * التحقق من جميع الصلاحيات
  */
+/**
+ * تشفير كلمة المرور
+ */
+export async function hashPassword(password: string): Promise<string> {
+  return bcrypt.hash(password, 12)
+}
+
+/**
+ * التحقق من كلمة المرور
+ */
+export async function verifyPassword(
+  password: string,
+  hashedPassword: string
+): Promise<boolean> {
+  return bcrypt.compare(password, hashedPassword)
+}
+
 export function hasAllPermissions(
   permissions: string[],
   requiredPermissions: string[],

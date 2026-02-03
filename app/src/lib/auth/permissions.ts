@@ -68,6 +68,13 @@ export async function requirePermission(
   permission: Permission,
   redirectTo: string = '/unauthorized'
 ): Promise<void> {
+  const session = await auth()
+  
+  // System admin bypasses all permission checks
+  if (session?.user?.isSystemRole) {
+    return
+  }
+  
   const has = await hasPermission(permission)
   if (!has) {
     redirect(redirectTo)
