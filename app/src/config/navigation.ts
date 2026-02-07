@@ -20,6 +20,8 @@ import {
   Settings,
   FileText,
   Trash2,
+  Calendar,
+  ClipboardList,
   type LucideIcon,
 } from "lucide-react"
 
@@ -74,6 +76,13 @@ export const sidebarNavItems: NavItem[] = [
     permission: "role.view",
   },
   {
+    id: "academic",
+    label: "الهيكل الأكاديمي",
+    icon: GraduationCap,
+    href: "/academic",
+    anyPermission: ["college.manage", "department.manage", "major.manage"],
+  },
+  {
     id: "courses",
     label: "إدارة المقررات",
     icon: BookOpen,
@@ -82,18 +91,26 @@ export const sidebarNavItems: NavItem[] = [
     showInMobile: true,
   },
   {
+    id: "semesters",
+    label: "الفصول والشعب",
+    icon: Calendar,
+    href: "/semesters",
+    anyPermission: ["semester.view", "semester.manage", "offering.view"],
+  },
+  {
+    id: "quizzes",
+    label: "الاختبارات",
+    icon: ClipboardList,
+    href: "/quizzes",
+    anyPermission: ["quiz.view", "quiz.create"],
+    showInMobile: true,
+  },
+  {
     id: "files",
     label: "إدارة الملفات",
     icon: FolderOpen,
     href: "/files",
     permission: "file.view",
-  },
-  {
-    id: "academic",
-    label: "البيانات الأكاديمية",
-    icon: GraduationCap,
-    href: "/academic",
-    anyPermission: ["college.manage", "department.manage", "major.manage", "semester.view"],
   },
   {
     id: "notifications",
